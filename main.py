@@ -1,11 +1,20 @@
-a = int(input())
-b = int(input())
-c = input()
-if c == '+':
-    print(a+b)
-if c == '-':
-    print(a-b)
-if c == '*':
-    print(a*b)
-if c == '/':
-    print(a/b)
+
+def calcul(expression):
+    allowed = '+-/*'
+    for sign in allowed:
+        if sign in expression:
+            try:
+                a, b = expression.split(sign)
+                a, b = int(a), int(b)
+                if sign == '+':
+                    return a + b
+                if sign == '-':
+                    return a - b
+                if sign == '*':
+                    return a * b
+                if sign == '/':
+                    return a / b
+            except(ValueError, TypeError):
+                raise ValueError('не корректный ввод')
+if __name__ == '__main__':
+    calcul('')
